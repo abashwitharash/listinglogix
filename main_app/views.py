@@ -1,10 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+
+class Property:
+    def __init__(self, address, price, status, description):
+        self.address = address
+        self.price = price
+        self.status = status
+        self.description = description
 
 # Define the home view function
 def home(request):
     # Send a simple HTML response
-    return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
+
+def lists_index(request):
+    # Render the cats/index.html template with the cats data
+    return render(request, 'lists/index.html', {'property': property})

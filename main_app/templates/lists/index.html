@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/lists/lists-index.css' %}" />
+{% endblock %} 
+
+{% block content %}
+
+<section class="page-header">
+  <h1> My Listings</h1>
+</section>
+
+<section class="card-container">
+  {% for property in properties %}
+  <div class="card">
+    <div class="card-content">
+      <div class="card-img-container">
+      </div>
+      <h2 class="card-title">{{ property.address }}</h2>
+      {% if property.price %}
+      <p>Listed at ${{ property.price }}</p>
+      {% else %}
+      <p><em>Price not listed</em></p>
+      {% endif %}
+      <p>Status: {{ property.status }}</p>
+      <p><small>{{ property.description }}</small></p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
+
