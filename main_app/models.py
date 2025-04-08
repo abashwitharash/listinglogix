@@ -32,6 +32,7 @@ class Property(models.Model):
     listed_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     date_posted = models.DateField(default=date.today) 
     dom = models.IntegerField(blank=True, null=True)   
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):

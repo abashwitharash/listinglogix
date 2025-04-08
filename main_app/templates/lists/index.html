@@ -1,4 +1,5 @@
 {% extends 'base.html' %} 
+{% load humanize %}
 {% load static %} 
 
 {% block head %}
@@ -21,7 +22,7 @@
       <h2 class="card-title">
         <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
       {% if property.price %}
-      <p>Listed at ${{ property.price }}</p>
+      <p>Listed at ${{ property.price|intcomma }}</p>
       {% else %}
       <p><em>Price not listed</em></p>
       {% endif %}
