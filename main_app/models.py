@@ -13,9 +13,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def get_absolute_url(self):
-        return reverse('lists-detail', kwargs={'list_id': self.id})
 
 # PROPERTY
 class Property(models.Model):
@@ -39,3 +36,6 @@ class Property(models.Model):
 
     def __str__(self):
         return self.address
+    
+    def get_absolute_url(self):
+        return reverse('list-detail', kwargs={'list_id': self.id})
