@@ -14,6 +14,10 @@
   .list-details {
     width: 98%;
   }
+
+  .list-actions {
+    margin-top: 20px;
+  }
   
   .subsection-title {
     display: flex;

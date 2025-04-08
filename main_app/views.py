@@ -1,10 +1,18 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Property
 
 class ListCreate(CreateView):
     model = Property
     fields = '__all__'
+
+class ListUpdate(UpdateView):
+    model = Property
+    fields = ['price', 'status', 'details', 'dom']
+
+class ListDelete(DeleteView):
+    model = Property
+    success_url = '/lists/'
 
 # Define the home view function
 def home(request):

@@ -8,7 +8,7 @@
   <div class="list-details">
     <h1>{{ property.address }}</h1>
     {% if property.price %}
-    <h3>Date: {{ property.date_posted }}</h3>
+    <h3>Date Posted: {{ property.date_posted }}</h3>
     <h3>DOM: {{ property.dom }}
     <h3>Listed at ${{ property.price }}</h3>
     {% else %}
@@ -17,6 +17,11 @@
     <p>Status: {{ property.status }}</p>
     <p>Details: {{ property.details }}</p>
     <p>Listed by: {{ property.listed_by }}
+
+      <div class="list-actions">
+        <a href="{% url 'lists-update' property.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'lists-delete' property.id %}" class="btn danger">Delete</a>
+      </div>
   </div>
 </section>
 {% endblock %}
