@@ -14,6 +14,7 @@
 <section class="card-container">
   {% for property in properties %}
   <div class="card">
+    <a href="/lists/{{ list.id }}">
     <div class="card-content">
       <div class="card-img-container">
       </div>
@@ -26,6 +27,7 @@
       <p>Status: {{ property.status }}</p>
       <p><small>{{ property.description }}</small></p>
     </div>
+  </a>
   </div>
   {% endfor %}
 </section>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/lists/lists-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="list-container">
+  <div class="list-details">
+    <h1>{{ property.address }}</h1>
+    {% if property.price %}
+    <p>Listed at ${{ property.price }}</p>
+    {% else %}
+    <p><em>Price not listed</em></p>
+    {% endif %}
+    <p>Status: {{ property.status }}</p>
+    <p><small>{{ property.description }}</small></p>
+  </div>
+</section>
+{% endblock %}
