@@ -15,4 +15,4 @@ def lists_index(request):
 
 def list_detail(request, list_id):
     property = Property.objects.get(id=list_id)
-    return render(request, 'lists/detail.html', {'list': list})
+    return render(request, 'lists/detail.html', {'property': property})

@@ -18,7 +18,8 @@
     <div class="card-content">
       <div class="card-img-container">
       </div>
-      <h2 class="card-title">{{ property.address }}</h2>
+      <h2 class="card-title">
+        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
       {% if property.price %}
       <p>Listed at ${{ property.price }}</p>
       {% else %}
