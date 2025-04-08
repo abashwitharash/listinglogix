@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Property
+
+class ListCreate(CreateView):
+    model = Property
+    fields = '__all__'
 
 # Define the home view function
 def home(request):

@@ -8,12 +8,15 @@
   <div class="list-details">
     <h1>{{ property.address }}</h1>
     {% if property.price %}
-    <p>Listed at ${{ property.price }}</p>
+    <h3>Date: {{ property.date_posted }}</h3>
+    <h3>DOM: {{ property.dom }}
+    <h3>Listed at ${{ property.price }}</h3>
     {% else %}
     <p><em>Price not listed</em></p>
     {% endif %}
     <p>Status: {{ property.status }}</p>
     <p>Details: {{ property.details }}</p>
+    <p>Listed by: {{ property.listed_by }}
   </div>
 </section>
 {% endblock %}
