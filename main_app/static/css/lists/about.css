@@ -1,0 +1,50 @@
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .about-header h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5em;
+  }
+  
+  .about-header p {
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .about-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 60px;
+    justify-content: center;
+  }
+  
+  .feature-card {
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 20px;
+  }
+  
+  .feature-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 1.6rem;
+    color: #444;
+  }
+  

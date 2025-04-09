@@ -1,7 +1,31 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/lists/about.css' %}" />
+{% endblock %}
+
 {% block content %}
-<h1>Why ListingLogix</h1>
-<hr />
-<p class="page-content">
-</p>
+<section class="about-container">
+  <div class="about-header">
+    <h1>Why ListingLogix</h1>
+    <hr />
+    <p class="page-content">
+      ListingLogix is a modern, agent-first platform designed to help real estate pros manage listings with clarity, speed, and style. No bloated dashboards. Just powerful tools built for results.
+    </p>
+  </div>
+
+  <div class="about-features">
+    <div class="feature-card">
+      <img src="{% static 'images/home.jpg' %}" alt="Dashboard Screenshot" />
+      <h3>All Your Listings, One Place</h3>
+      <p>View, edit, and manage all active and pending properties without the clutter.</p>
+    </div>
+    <div class="feature-card">
+      <img src="{% static 'images/agent.jpg' %}" alt="Agent Profile Preview" />
+      <h3>Agent Profiles</h3>
+      <p>Boost client trust with personalized profiles for each agent on your team.</p>
+    </div>
+  </div>
+</section>
 {% endblock %}
