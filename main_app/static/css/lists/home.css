@@ -15,9 +15,7 @@ main {
     flex-direction: column;
   }
   
-  .header-logo-container {
-    display: none;
-  }
+
   
   .logo-container {
     max-width: 375px;
@@ -84,4 +82,31 @@ main {
       max-width: 520px;
     }
   }
+
+  .hero-container {
+    width: 100%;
+    padding: 40px 20px 20px;
+    text-align: center;
+  }
+  
+  .logo-showcase img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+  
+  .hero-title {
+    font-size: 4.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .hero-sub {
+    font-size: 2rem;
+    color: #444;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+
   

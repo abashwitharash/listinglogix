@@ -16,13 +16,13 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'images/logo.png' %}" alt="The SNKRHEAD Logo" />
+          <img src="{% static 'images/logosvg.svg' %}" alt="The ListingLogix Logo" />
         </a>
       </div>
       <nav>
         <ul>
           {% if user.is_authenticated %}
-          <li><a href="{% url 'lists-index' %}">All Listings</a></li>
+          <li><a href="{% url 'lists-index' %}">My Listings</a></li>
           <li><a href="{% url 'list-create' %}">Create a Listing</a></li>
           <li><a href="/about">About</a></li>
           <li>
@@ -43,5 +43,11 @@
      {% block content %} 
      {% endblock %}
      </main>
+     <footer class="site-footer" style="font-size: 13px; color: black;">
+      <p>
+        © 2025 Arash Salehpour 
+        <a href="https://github.com/abashwitharash" target="_blank">GitHub</a>
+      </p>
+    </footer>
   </body>
 </html>

@@ -53,3 +53,7 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
+
+def all_listings(request):
+    properties = Property.objects.all()
+    return render(request, 'lists/all.html', {'properties': properties})
