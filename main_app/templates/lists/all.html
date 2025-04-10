@@ -19,7 +19,7 @@
       </h2>
       <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
       <p>Status: {{ property.status }}</p>
-      <p>Listed by: {{ property.listed_by.name }}</p>
+      <p>Listed by: {{ property.listed_by.first_name }} {{ property.listed_by.last_name }}</p>
     </div>
   </div>
   {% endfor %}
