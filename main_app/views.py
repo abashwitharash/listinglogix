@@ -9,7 +9,13 @@ from .models import Property
 
 class ListCreate(LoginRequiredMixin, CreateView):
     model = Property
-    fields = '__all__'
+    fields = ['address', 'price', 'status', 'details', 'date_posted', 'dom']  # no 'user' or 'listed_by'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user 
+        form.instance.listed_by = self.request.user.userprofile 
+        return super().form_valid(form)
+
 
 def form_valid(self, form):
     form.instance.user = self.request.user  
