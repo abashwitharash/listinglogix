@@ -23,9 +23,10 @@ class ListDelete(LoginRequiredMixin, DeleteView):
     model = Property
     success_url = '/lists/'
 
-# Define the home view function
+
 class Home(LoginView):
     template_name = 'home.html'
+    # need to fugure out how to redirect and stay at home page - ask ashley
 
 def about(request):
     return render(request, 'about.html')

@@ -19,10 +19,12 @@
     <p>Details: {{ property.details }}</p>
     <p>Listed by: {{ property.listed_by }}
 
+      {% if user == property.user %}
       <div class="list-actions">
         <a href="{% url 'lists-update' property.id %}" class="btn warn">Edit</a>
         <a href="{% url 'lists-delete' property.id %}" class="btn danger">Delete</a>
       </div>
+    {% endif %}
   </div>
 </section>
 {% endblock %}

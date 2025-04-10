@@ -9,7 +9,13 @@
 <section class="hero-container">
   <div class="logo-showcase">
     <img src="{% static 'images/logosvg.svg' %}" alt="ListingLogix Logo" />
-    <h1 class="hero-title">Welcome to ListingLogix</h1>
+    <h1 class="hero-title">
+      {% if user.is_authenticated %}
+        Welcome, {{ user.username }}!
+      {% else %}
+        Welcome to ListingLogix
+      {% endif %}
+    </h1>
     <p class="hero-sub">Streamline your real estate listings with confidence.</p>
   </div>
 </section>
