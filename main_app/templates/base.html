@@ -26,9 +26,11 @@
       <nav>
         <ul>
           {% if user.is_authenticated %}
+            {% if user.userprofile %}
           <li><a href="{% url 'lists-index' %}">My Listings</a></li>
           <li><a href="{% url 'all-listings' %}">All Listings</a></li>
           <li><a href="{% url 'list-create' %}">Create a Listing</a></li>
+          {% endif %}
           <li><a href="/about">About</a></li>
           <li>
             <form id="logout-form" method="post" action="{% url 'logout' %}">
