@@ -5,7 +5,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from .forms import UserProfileForm
+from .models import UserProfile
 from .models import Property
+
 
 class ListCreate(LoginRequiredMixin, CreateView):
     model = Property
@@ -54,7 +57,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('lists-index')
+            return redirect('create-profile')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
@@ -64,3 +67,17 @@ def signup(request):
 def all_listings(request):
     properties = Property.objects.all()
     return render(request, 'lists/all.html', {'properties': properties})
+
+@login_required
+def create_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('home') 
+    else:
+        form = UserProfileForm()
+
+    return render(request, 'profiles/create.html', {'form': form})

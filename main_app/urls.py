@@ -11,4 +11,6 @@ urlpatterns = [
     path('lists/<int:pk>/delete/', views.ListDelete.as_view(), name='lists-delete'),
     path('accounts/signup/', views.signup, name='signup'),
     path('all/', views.all_listings, name='all-listings'),
+    path('profile/create/', views.create_profile, name='create-profile'),
+
 ]
