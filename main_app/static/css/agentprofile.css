@@ -1,0 +1,48 @@
+/* Agent Info */
+.agent-info {
+    width: 100%;
+    padding: 20px 30px;
+    border-bottom: var(--borders);
+    margin-bottom: 30px;
+  }
+  
+  .agent-info h1 {
+    font-size: var(--font-xxl);
+    margin-bottom: 10px;
+  }
+  
+  .agent-info p {
+    font-size: var(--font-reg);
+    margin: 5px 0;
+  }
+  
+  /* Listings Section */
+  .card-container {
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 275px;
+    margin: 10px;
+    border: var(--borders);
+    box-shadow: var(--card-box-shadow);
+  }
+  
+  .card-content {
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .card h2 {
+    margin: 10px 0;
+    font-size: var(--font-xl);
+  }
+  
+  .card p {
+    margin: 5px 0;
+    font-size: var(--font-reg);
+  }
+  

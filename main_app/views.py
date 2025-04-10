@@ -113,6 +113,15 @@ def my_profile(request):
     return render(request, 'profiles/myprofile.html', {'profile': profile})
 
 @login_required
-def all_users(request):
-    users = UserProfile.objects.all().exclude(user=request.user)
-    return render(request, 'profiles/allusers.html', {'users': users})
+def all_agents(request):
+    agents = UserProfile.objects.all().exclude(user=request.user)
+    return render(request, 'profiles/allagents.html', {'agents': agents})
+
+@login_required
+def agent_profile(request, user_id):
+    profile = UserProfile.objects.get(id=user_id)
+    listings = Property.objects.filter(listed_by=profile)
+    return render(request, 'profiles/agentprofile.html', {
+        'profile': profile,
+        'listings': listings
+    })

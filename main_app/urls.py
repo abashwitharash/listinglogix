@@ -15,6 +15,8 @@ urlpatterns = [
     path('profile/me/', views.my_profile, name='my-profile'),
     path('profile/edit/', views.EditProfile.as_view(), name='edit-profile'),
     path('profile/delete/', views.DeleteProfile.as_view(), name='delete-profile'),
-    path('users/', views.all_users, name='all-users'),
+    path('agents/', views.all_agents, name='all-agents'),
+    path('agents/<int:user_id>/', views.agent_profile, name='agent-profile'),
+
 
 ]   

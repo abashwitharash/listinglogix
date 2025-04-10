@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/agentprofile.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="agent-info">
+  <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+  <p>Email: {{ profile.email }}</p>
+  {% if profile.phone %}<p>Phone: {{ profile.phone }}</p>{% endif %}
+  {% if profile.agency %}<p>Agency: {{ profile.agency }}</p>{% endif %}
+</section>
+
+<section class="page-header">
+  <h2>Listings by {{ profile.first_name }}</h2>
+</section>
+
+<section class="card-container">
+  {% for property in listings %}
+  <div class="card">
+    <div class="card-content">
+      <h2 class="card-title">
+        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
+      </h2>
+      <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
+      <p>Status: {{ property.status }}</p>
+    </div>
+  </div>
+  {% empty %}
+  <p>This agent has no listings yet.</p>
+  {% endfor %}
+</section>
+{% endblock %}
