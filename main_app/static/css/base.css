@@ -79,7 +79,7 @@ html {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
-    font-size: 25px;
+    font-size: 10px;
   }
   
   nav a:hover {
@@ -254,7 +254,7 @@ html {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
-    font-size: 25px;
+    font-size: 10px;
     background: none;
     border: none;
     cursor: pointer;
@@ -265,3 +265,12 @@ html {
   #logout-form button:hover {
     color: var(--link-hover-color);
   }
+
+  .user-greeting {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-left: 20px;
+    vertical-align: middle;
+    color: var(--text-color);
+  }
+  

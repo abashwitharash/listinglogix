@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/lists/lists-index.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>All Listings</h1>
+</section>
+
+<section class="card-container">
+  {% for property in properties %}
+  <div class="card">
+    <div class="card-content">
+      <h2 class="card-title">
+        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
+      </h2>
+      <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
+      <p>Status: {{ property.status }}</p>
+      <p>Listed by: {{ property.listed_by.name }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

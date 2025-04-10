@@ -18,11 +18,16 @@
         <a href="/">
           <img src="{% static 'images/logosvg.svg' %}" alt="The ListingLogix Logo" />
         </a>
+        {% if user.is_authenticated %}
+        <span class="user-greeting">{{ user.username }}</span>
+      {% endif %}
+    </div>
       </div>
       <nav>
         <ul>
           {% if user.is_authenticated %}
           <li><a href="{% url 'lists-index' %}">My Listings</a></li>
+          <li><a href="{% url 'all-listings' %}">All Listings</a></li>
           <li><a href="{% url 'list-create' %}">Create a Listing</a></li>
           <li><a href="/about">About</a></li>
           <li>

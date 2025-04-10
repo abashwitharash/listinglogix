@@ -10,4 +10,5 @@ urlpatterns = [
     path('lists/<int:pk>/update/', views.ListUpdate.as_view(), name='lists-update'),
     path('lists/<int:pk>/delete/', views.ListDelete.as_view(), name='lists-delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('all/', views.all_listings, name='all-listings'),
 ]
