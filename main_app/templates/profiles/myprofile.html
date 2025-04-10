@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="page-header">
+    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+    <p>Email: {{ profile.email }}</p>
+    <p>Phone: {{ profile.phone }}</p>
+    <p>Agency: {{ profile.agency }}</p>
+
+    <a href="{% url 'edit-profile' %}" class="btn warn">Edit Profile</a>
+    <a href="{% url 'delete-profile' %}" class="btn danger">Delete Profile</a>
+  </div>
+{% endblock %}

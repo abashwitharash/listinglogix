@@ -27,6 +27,7 @@
         <ul>
           {% if user.is_authenticated %}
             {% if user.userprofile %}
+          <li><a href="{% url 'my-profile' %}">My Profile</a></li>
           <li><a href="{% url 'lists-index' %}">My Listings</a></li>
           <li><a href="{% url 'all-listings' %}">All Listings</a></li>
           <li><a href="{% url 'list-create' %}">Create a Listing</a></li>

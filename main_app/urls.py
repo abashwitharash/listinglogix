@@ -12,5 +12,9 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('all/', views.all_listings, name='all-listings'),
     path('profile/create/', views.create_profile, name='create-profile'),
+    path('profile/me/', views.my_profile, name='my-profile'),
+    path('profile/edit/', views.EditProfile.as_view(), name='edit-profile'),
+    path('profile/delete/', views.DeleteProfile.as_view(), name='delete-profile'),
+    path('users/', views.all_users, name='all-users'),
 
-]
+]   

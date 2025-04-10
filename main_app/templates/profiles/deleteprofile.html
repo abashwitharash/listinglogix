@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header">
+  <h1>Delete Profile</h1>
+</div>
+
+<p style="font-size: 1.6rem; margin: 20px 0;">
+  Are you sure you want to <strong>delete your profile</strong> and permanently leave ListingLogix?
+</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn danger">Yes, Delete My Account</button>
+  <a href="{% url 'my-profile' %}" class="btn secondary">Cancel</a>
+</form>
+{% endblock %}
