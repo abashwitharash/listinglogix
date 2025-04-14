@@ -1,4 +1,3 @@
-/* Agent Info */
 .agent-info {
     width: 100%;
     padding: 20px 30px;
@@ -16,7 +15,6 @@
     margin: 5px 0;
   }
   
-  /* Listings Section */
   .card-container {
     padding: 0 30px;
     display: flex;
@@ -45,4 +43,5 @@
     margin: 5px 0;
     font-size: var(--font-reg);
   }
+  
   

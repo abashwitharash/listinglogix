@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
-{% block content %}
-  <div class="page-header">
-    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
-    <p>Email: {{ profile.email }}</p>
-    <p>Phone: {{ profile.phone }}</p>
-    <p>Agency: {{ profile.agency }}</p>
+{% load static %}
 
+{% block content %}
+<section class="agent-profile-box">
+  <div class="profile-header">
+    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+  </div>
+
+  <div class="profile-details">
+    <p><strong>Email:</strong> {{ profile.email }}</p>
+    <p><strong>Phone:</strong> {{ profile.phone }}</p>
+    <p><strong>Agency:</strong> {{ profile.agency }}</p>
+  </div>
+
+  <div class="profile-actions">
     <a href="{% url 'edit-profile' %}" class="btn warn">Edit Profile</a>
     <a href="{% url 'delete-profile' %}" class="btn danger">Delete Profile</a>
   </div>
+</section>
 {% endblock %}
