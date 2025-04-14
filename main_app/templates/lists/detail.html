@@ -17,7 +17,12 @@
     {% endif %}
     <p>Status: {{ property.status }}</p>
     <p>Details: {{ property.details }}</p>
-    <p>Listed by: {{ property.listed_by }}
+    <p>
+      Listed by: 
+      <a href="{% url 'agent-profile' property.listed_by.id %}">
+        {{ property.listed_by }}
+      </a>
+    </p>
 
       {% if user == property.user %}
       <div class="list-actions">
