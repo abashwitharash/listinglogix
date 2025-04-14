@@ -2,16 +2,16 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
-# USER PROFILE
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(blank=True, null=True) 
     phone = models.CharField(max_length=100, blank=True, null=True)  
-    agency = models.CharField(max_length=100, blank=True, null=True) 
-
+    agency = models.CharField(max_length=100, blank=True, null=True)
+    photo = CloudinaryField('image', blank=True, null=True)  # 👈 Add this line
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -42,3 +42,13 @@ class Property(models.Model):
     
     def get_absolute_url(self):
         return reverse('list-detail', kwargs={'list_id': self.id})
+
+
+from cloudinary.models import CloudinaryField
+
+class ListingImage(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
+    image = CloudinaryField('image')
+
+    def __str__(self):
+        return f"Image for {self.property.address}"

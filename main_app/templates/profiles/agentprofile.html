@@ -7,6 +7,9 @@
 
 {% block content %}
 <section class="agent-info">
+  {% if profile.photo %}
+  <img src="{{ profile.photo.url }}" alt="Agent Photo" class="agent-photo" />
+{% endif %}
   <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
   <p>Email: {{ profile.email }}</p>
   {% if profile.phone %}<p>Phone: {{ profile.phone }}</p>{% endif %}
@@ -19,17 +22,23 @@
 
 <section class="card-container">
   {% for property in listings %}
-  <div class="card">
-    <div class="card-content">
-      <h2 class="card-title">
-        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
-      </h2>
-      <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
-      <p>Status: {{ property.status }}</p>
+    <div class="card">
+      {% if property.images.first %}
+        <img src="{{ property.images.first.image.url }}" alt="Preview" class="preview-img" />
+      {% else %}
+        <div class="preview-placeholder">No photo yet</div>
+      {% endif %}
+
+      <div class="card-content">
+        <h2 class="card-title">
+          <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
+        </h2>
+        <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
+        <p>Status: {{ property.status }}</p>
+      </div>
     </div>
-  </div>
   {% empty %}
-  <p>This agent has no listings yet.</p>
+    <p>This agent has no listings yet.</p>
   {% endfor %}
 </section>
 {% endblock %}

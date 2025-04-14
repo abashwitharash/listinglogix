@@ -12,16 +12,22 @@
 
 <section class="card-container">
   {% for property in properties %}
-  <div class="card">
-    <div class="card-content">
-      <h2 class="card-title">
-        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
-      </h2>
-      <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
-      <p>Status: {{ property.status }}</p>
-      <p>Listed by: {{ property.listed_by.first_name }} {{ property.listed_by.last_name }}</p>
+    <div class="card">
+      {% if property.images.first %}
+        <img src="{{ property.images.first.image.url }}" alt="Preview" class="preview-img" />
+      {% else %}
+        <div class="preview-placeholder">No photo yet</div>
+      {% endif %}
+
+      <div class="card-content">
+        <h2 class="card-title">
+          <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
+        </h2>
+        <p>Listed at ${{ property.price|floatformat:2|intcomma }}</p>
+        <p>Status: {{ property.status }}</p>
+        <p>Listed by: {{ property.listed_by.first_name }} {{ property.listed_by.last_name }}</p>
+      </div>
     </div>
-  </div>
   {% endfor %}
 </section>
 {% endblock %}

@@ -1,38 +1,41 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load humanize %}
-{% load static %} 
+{% load static %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/lists/lists-index.css' %}" />
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
-
 <section class="page-header">
-  <h1> My Listings</h1>
+  <h1>My Listings</h1>
 </section>
 
 <section class="card-container">
   {% for property in properties %}
-  <div class="card">
-    <a href="/lists/{{ list.id }}">
-    <div class="card-content">
-      <div class="card-img-container">
-      </div>
-      <h2 class="card-title">
-        <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
-      {% if property.price %}
-      <p>Listed at ${{ property.price|intcomma }}</p>
+    <div class="card">
+      {% if property.images.first %}
+        <img src="{{ property.images.first.image.url }}" alt="Preview" class="preview-img" />
       {% else %}
-      <p><em>Price not listed</em></p>
+        <div class="preview-placeholder">No photo yet</div>
       {% endif %}
-      <p>Status: {{ property.status }}</p>
-      <p><small>{{ property.description }}</small></p>
+
+      <div class="card-content">
+        <h2 class="card-title">
+          <a href="{% url 'list-detail' property.id %}">{{ property.address }}</a>
+        </h2>
+
+        {% if property.price %}
+          <p>Listed at ${{ property.price|intcomma }}</p>
+        {% else %}
+          <p><em>Price not listed</em></p>
+        {% endif %}
+
+        <p>Status: {{ property.status }}</p>
+        <p><small>{{ property.description }}</small></p>
+      </div>
     </div>
-  </a>
-  </div>
   {% endfor %}
 </section>
-
 {% endblock %}
 

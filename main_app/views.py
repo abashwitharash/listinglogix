@@ -5,8 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from .forms import UserProfileForm
-from .models import UserProfile
+from .forms import UserProfileForm, ListingImageForm
+from .models import UserProfile, Property, ListingImage
 from django.urls import reverse
 from .models import Property
 
@@ -39,7 +39,7 @@ class Home(LoginView):
 
 class EditProfile(LoginRequiredMixin, UpdateView):
     model = UserProfile
-    fields = ['first_name', 'last_name', 'email', 'phone', 'agency']
+    fields = ['first_name', 'last_name', 'email', 'phone', 'agency', 'photo']
     template_name = 'profiles/editprofile.html'
 
     def get_object(self):
@@ -73,7 +73,27 @@ def lists_index(request):
 @login_required
 def list_detail(request, list_id):
     property = Property.objects.get(id=list_id)
-    return render(request, 'lists/detail.html', {'property': property})
+
+    # Only allow the listing's owner to upload images
+    if request.method == 'POST':
+        if request.user != property.user:
+            return redirect('list-detail', list_id=property.id)
+
+        form = ListingImageForm(request.POST, request.FILES)
+        files = request.FILES.getlist('image')
+
+        if files:
+            for f in files:
+                ListingImage.objects.create(property=property, image=f)
+            return redirect('list-detail', list_id=property.id)
+    else:
+        form = ListingImageForm()
+
+    return render(request, 'lists/detail.html', {
+        'property': property,
+        'form': form
+    })
+
 
 def signup(request):
     error_message = ''
@@ -114,7 +134,7 @@ def my_profile(request):
 
 @login_required
 def all_agents(request):
-    agents = UserProfile.objects.all().exclude(user=request.user)
+    agents = UserProfile.objects.all()
     return render(request, 'profiles/allagents.html', {'agents': agents})
 
 @login_required

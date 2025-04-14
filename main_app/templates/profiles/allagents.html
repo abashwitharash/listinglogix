@@ -13,6 +13,14 @@
 <section class="card-container">
   {% for agent in agents %}
   <div class="card">
+    <div class="card-img-container">
+      {% if agent.photo %}
+        <img src="{{ agent.photo.url }}" alt="{{ agent.first_name }}" class="agent-photo" />
+      {% else %}
+        <div class="preview-placeholder">No photo yet</div>
+      {% endif %}
+    </div>
+  
     <div class="card-content">
       <h2 class="card-title">
         <a href="{% url 'agent-profile' agent.id %}">
@@ -21,10 +29,10 @@
       </h2>
       <p>Email: {{ agent.email }}</p>
       {% if agent.agency %}
-      <p>Agency: {{ agent.agency }}</p>
+        <p>Agency: {{ agent.agency }}</p>
       {% endif %}
       {% if agent.phone %}
-      <p>Phone: {{ agent.phone }}</p>
+        <p>Phone: {{ agent.phone }}</p>
       {% endif %}
     </div>
   </div>

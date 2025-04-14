@@ -1,20 +1,24 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load humanize %}
-{% load static %} 
+{% load static %}
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/lists/lists-detail.css' %}" />
-{% endblock %} 
+{% endblock %}
+
 {% block content %}
 <section class="list-container">
   <div class="list-details">
     <h1>{{ property.address }}</h1>
+
     {% if property.price %}
-    <h3>Date Posted: {{ property.date_posted }}</h3>
-    <h3>DOM: {{ property.dom }}
-    <h3>Listed at ${{ property.price|intcomma }}</h3>
+      <h3>Date Posted: {{ property.date_posted }}</h3>
+      <h3>DOM: {{ property.dom }}</h3>
+      <h3>Listed at ${{ property.price|intcomma }}</h3>
     {% else %}
-    <p><em>Price not listed</em></p>
+      <p><em>Price not listed</em></p>
     {% endif %}
+
     <p>Status: {{ property.status }}</p>
     <p>Details: {{ property.details }}</p>
     <p>
@@ -24,12 +28,27 @@
       </a>
     </p>
 
-      {% if user == property.user %}
-      <div class="list-actions">
-        <a href="{% url 'lists-update' property.id %}" class="btn warn">Edit</a>
-        <a href="{% url 'lists-delete' property.id %}" class="btn danger">Delete</a>
-      </div>
+    {% if user == property.user %}
+    <div class="list-actions">
+      <a href="{% url 'lists-update' property.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'lists-delete' property.id %}" class="btn danger">Delete</a>
+    </div>
     {% endif %}
   </div>
+
+
+  {% if property.images.first %}
+  <h3>Listing Photo:</h3>
+  <img src="{{ property.images.first.image.url }}" alt="Listing Photo" class="listing-photo" />
+{% endif %}
+
+{% if user == property.user %}
+  <h3>Add Listing Photos:</h3>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn submit">Upload Photos</button>
+  </form>
+{% endif %}
 </section>
 {% endblock %}
