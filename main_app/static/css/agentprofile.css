@@ -85,12 +85,15 @@
     justify-content: center;
   }
   
-  
-  .agent-photo {
-    width: 100%;
+
+
+  .profile-headshot {
+    width: 200px;
     height: 200px;
+    border-radius: 50%;
     object-fit: cover;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    margin: 0 auto 20px;
     display: block;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
   }
+  

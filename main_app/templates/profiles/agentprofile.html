@@ -8,8 +8,8 @@
 {% block content %}
 <section class="agent-info">
   {% if profile.photo %}
-  <img src="{{ profile.photo.url }}" alt="Agent Photo" class="agent-photo" />
-{% endif %}
+  <img src="{{ profile.photo.url }}" alt="Agent Photo" class="agent-photo profile-headshot" />
+  {% endif %}
   <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
   <p>Email: {{ profile.email }}</p>
   {% if profile.phone %}<p>Phone: {{ profile.phone }}</p>{% endif %}
